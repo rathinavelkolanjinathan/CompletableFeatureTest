@@ -1,8 +1,8 @@
-package com.javatechie.async;
+package com.java.async;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.javatechie.async.dto.Employee;
+import com.java.async.dto.Employee;
 
 import java.io.File;
 import java.io.IOException;

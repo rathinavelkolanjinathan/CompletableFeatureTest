@@ -1,4 +1,4 @@
-package com.javatechie.async;
+package com.java.async;
 
 import java.util.Arrays;
 import java.util.List;

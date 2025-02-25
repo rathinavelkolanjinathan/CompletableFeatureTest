@@ -1,7 +1,7 @@
-package com.javatechie.async;
+package com.java.async;
 
-import com.javatechie.async.database.EmployeeDatabase;
-import com.javatechie.async.dto.Employee;
+import com.java.async.database.EmployeeDatabase;
+import com.java.async.dto.Employee;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
