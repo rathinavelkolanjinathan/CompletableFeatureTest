@@ -8,12 +8,12 @@ public class WhyNotFuture {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        ExecutorService service=Executors.newFixedThreadPool(10);
+        ExecutorService service = Executors.newFixedThreadPool(10);
 
         Future<List<Integer>> future = service.submit(() -> {
             //your doing api call
-            System.out.println("Thread : "+Thread.currentThread().getName());
-            System.out.println(10/0);
+            System.out.println("Thread : " + Thread.currentThread().getName());
+            System.out.println(10 / 0);
             return Arrays.asList(1, 2, 3, 4);
         });
 
@@ -21,7 +21,7 @@ public class WhyNotFuture {
         List<Integer> integers = future.get();
         System.out.println(integers);
 
-        CompletableFuture<String> completableFuture=new CompletableFuture<>();
+        CompletableFuture<String> completableFuture = new CompletableFuture<>();
         completableFuture.get();
         completableFuture.complete("return some dummy data.....");
 

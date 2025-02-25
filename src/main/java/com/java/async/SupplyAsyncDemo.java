@@ -8,6 +8,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
 // supplyAsync()-> if we want to run  background task asynchronously and want to return any think from
 // that task we should use completable feature
 public class SupplyAsyncDemo {
@@ -18,7 +19,7 @@ public class SupplyAsyncDemo {
                 .supplyAsync(() -> {
                     System.out.println("Executed by : " + Thread.currentThread().getName());
                     return EmployeeDatabase.fetchEmployees();
-                },executor);
+                }, executor);
         return listCompletableFuture.get();
     }
 

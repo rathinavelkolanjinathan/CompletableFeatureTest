@@ -1,1 +1,4 @@
 # completablefuture-demo
+
+runAsynch()->
+supplyAsync()->
