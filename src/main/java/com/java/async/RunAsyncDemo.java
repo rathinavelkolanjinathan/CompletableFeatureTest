@@ -11,11 +11,13 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-// runAsync --> if you want run some  background task asynchronously and do not want to return anything then use
+// runAsync --> if you want run some  background task asynchronously and do not want
+// to return anything then use
 // CompletableFuture  runasync() method
 
 public class RunAsyncDemo {
 
+    // this is not used for global thread pool
     public Void saveEmployees(File jsonFile) throws ExecutionException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
         CompletableFuture<Void> runAsyncFuture = CompletableFuture.runAsync(new Runnable() {
@@ -40,9 +42,11 @@ public class RunAsyncDemo {
     }
 
 
+    //same method implemented With lambda expression
+
     public Void saveEmployeesWithCustomExecutor(File jsonFile) throws ExecutionException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
-        Executor executor = Executors.newFixedThreadPool(5);
+        Executor executor = Executors.newFixedThreadPool(5); // own thread pool based on the data or core it will splitted more thread and execute concurrently we not implented this peace of code it will take global pool
         CompletableFuture<Void> runAsyncFuture = CompletableFuture.runAsync(
                 () -> {
                     try {
