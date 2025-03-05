@@ -9,12 +9,12 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
-public class EmployeeReminderService {
+public class ThenApplyAsyncDemo {
 
 
     public CompletableFuture<Void> sendReminderToEmployee() {
 
-        Executor executor = Executors.newFixedThreadPool(5);
+        Executor executor = Executors.newFixedThreadPool(5); // Here run with separate thread
 
         CompletableFuture<Void> voidCompletableFuture = CompletableFuture.supplyAsync(() -> {
                     System.out.println("fetchEmployee : " + Thread.currentThread().getName());
@@ -38,7 +38,7 @@ public class EmployeeReminderService {
                 }, executor)
                 .thenAcceptAsync((emails) -> {
                     System.out.println("send email  : " + Thread.currentThread().getName());
-                    emails.forEach(EmployeeReminderService::sendEmail);
+                    emails.forEach(ThenApplyAsyncDemo::sendEmail);
                 }, executor);
         return voidCompletableFuture;
     }
@@ -50,7 +50,7 @@ public class EmployeeReminderService {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        EmployeeReminderService service = new EmployeeReminderService();
+        ThenApplyAsyncDemo service = new ThenApplyAsyncDemo();
         service.sendReminderToEmployee().get();
     }
 }
