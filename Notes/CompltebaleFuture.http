@@ -1,0 +1,24 @@
+
+Below code scenario exceptional is handle the each computable future but draw back
+is once exception is throw then run the next completableFuture code.
+So this is not good right that why we are move to global exception handling.
+
+ CompletableFuture<String> employeeDataFuture = CompletableFuture
+                .supplyAsync(() -> {
+                    gracefullyShutDown("Employee");
+                    return "Employee information update in DB";
+                });
+//                .exceptionally(ex -> {   --- This is also one way to  handle the exception but once exception was throw then again will exceute the next future ,but it dont want
+//                    System.out.println("unable to update employee information in DB");
+//                    return "500 Internal Server Error";
+//                });
+
+        CompletableFuture<String> employeeDocumentFuture = CompletableFuture
+                .supplyAsync(() -> {
+                    //gracefullyShutDown("S3");
+                    return "Employee document update in S3";
+                });
+//                .exceptionally(ex -> {
+//                    System.out.println("unable to update employee document in s3");
+//                    return "500 Internal Server Error";
+//                });
