@@ -10,7 +10,7 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 // supplyAsync()-> if we want to run  background task asynchronously and want to return any think from
-// that task we should use completable feature
+// the task we should use completable feature
 public class SupplyAsyncDemo {
 
     public List<Employee> getEmployees() throws ExecutionException, InterruptedException {

@@ -149,6 +149,39 @@ public class Java8MethodCheatSheet {
                 .filter(e -> e.getDept()
                         .equals("Development"))
                 .findAny().orElseThrow(() -> new IllegalArgumentException("Department is present"));
+//anyMatch()
+        boolean anyMatch = empl.stream().anyMatch(e -> e.getDept()
+                .equals("Development"));
+
+//allMatch
+        boolean allMatch = empl.stream().allMatch(e -> e.getDept()
+                .equals("opopi"));
+
+//noneMatch
+        boolean noneMatch = empl.stream().noneMatch(e -> e.getDept()
+                .equals("HR"));
+        //System.out.println("noneMatch" +noneMatch);
+
+        //Limit  below method is print all employee But I want limit the top employee salary
+      List<Employee> highSalary =   empl.stream()
+              .sorted(Comparator.comparing(Employee::getSalary)
+                      .reversed())
+              .collect(Collectors.toList());
+
+      // other way
+        List<Employee> highSalary2 =   empl.stream()
+                .sorted(Collections.reverseOrder(Comparator.comparing(Employee::getSalary)))
+
+                .collect(Collectors.toList());
+      //
+        System.out.println("highSalary" +highSalary);
+        List<Employee> highSalary1 =   empl.stream()
+                .sorted(Comparator.comparing(Employee::getSalary)
+                        .reversed()).limit(3)  //top 3 values
+                .collect(Collectors.toList());
+
+        //Skip
+       List<Employee> skip =  empl.stream().skip(3).collect(Collectors.toList());
 
     }
 }
